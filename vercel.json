@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "edge-media-stream-optimizer",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/media-stream" }
+  ],
+  "trailingSlash": false
+}
