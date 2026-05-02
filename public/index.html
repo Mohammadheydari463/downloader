@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivFlood - حفاظت حرفه‌ای</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --pink: #ff1493;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', system-ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1a0033 0%, #4a0022 100%);
+        }
+        
+        .pink-glow {
+            text-shadow: 0 0 30px #ff1493,
+                        0 0 60px #ff1493;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.6);
+        }
+        
+        .neon-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neon-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.4),
+                transparent
+            );
+            transform: skewX(-25deg);
+            animation: shimmer 4s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% { transform: translateX(400%); }
+        }
+        
+        .status-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-pink-500/30">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg shadow-pink-500/50">
+                    P
+                </div>
+                <h1 class="text-3xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">PRIVFLOOD</h1>
+            </div>
+            
+            <div class="flex items-center gap-8 text-lg">
+                <a href="#" class="hover:text-pink-400 transition-colors">خانه</a>
+                <a href="#features" class="hover:text-pink-400 transition-colors">ویژگی‌ها</a>
+                <a href="#servers" class="hover:text-pink-400 transition-colors">سرورها</a>
+                <a href="#deploy" class="hover:text-pink-400 transition-colors">شروع سریع</a>
+            </div>
+            
+            <a href="https://t.me/privflood" target="_blank" 
+               class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 px-6 py-3 rounded-2xl font-semibold transition-all neon-button">
+                <i class="fa-brands fa-telegram text-2xl"></i>
+                <span>@privflood</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(at_center,#ff149380_0%,transparent_70%)]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-pink-400/30">
+                    <div class="w-3 h-3 bg-green-400 rounded-full status-dot"></div>
+                    <span class="text-sm font-medium">سرویس فعال ۲۰۲۶</span>
+                </div>
+                
+                <h1 class="text-7xl md:text-8xl font-black leading-none pink-glow">
+                    PRIV<br>FLOOD
+                </h1>
+                
+                <p class="text-3xl text-pink-200 font-light">
+                    سریع‌ترین • امن‌ترین • قدرتمندترین
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://t.me/privflood" target="_blank"
+                       class="neon-button px-10 py-5 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-3xl text-xl font-bold hover:scale-105 transition-transform flex items-center gap-3">
+                        <i class="fa-brands fa-telegram"></i>
+                        شروع فوری
+                    </a>
+                    <button onclick="document.getElementById('servers').scrollIntoView({behavior:'smooth'})"
+                            class="px-10 py-5 border-2 border-pink-400 rounded-3xl text-xl font-bold hover:bg-pink-500/10 transition-all">
+                        وضعیت سرورها
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-10 text-sm">
+                    <div>
+                        <div class="text-green-400 text-4xl font-bold">99.9%</div>
+                        <div class="text-zinc-400"> uptime</div>
+                    </div>
+                    <div>
+                        <div class="text-pink-400 text-4xl font-bold">&lt;10ms</div>
+                        <div class="text-zinc-400"> latency</div>
+                    </div>
+                    <div>
+                        <div class="text-purple-400 text-4xl font-bold">50+</div>
+                        <div class="text-zinc-400"> لوکیشن</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side visual -->
+            <div class="relative hidden md:block">
+                <div class="absolute -inset-20 bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-[100px] blur-3xl floating"></div>
+                <div class="relative bg-zinc-900/70 backdrop-blur-xl border border-pink-400/30 rounded-3xl p-8 shadow-2xl">
+                    <div class="bg-black rounded-2xl p-6 text-center">
+                        <div class="flex justify-center mb-6">
+                            <div class="flex gap-2">
+                                <div class="w-5 h-5 bg-green-400 rounded-full animate-pulse"></div>
+                                <div class="w-5 h-5 bg-green-400 rounded-full animate-pulse delay-150"></div>
+                                <div class="w-5 h-5 bg-green-400 rounded-full animate-pulse delay-300"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-pink-400 mb-2">Flood Active</h3>
+                        <p class="text-zinc-400">سرورهای شما در بالاترین سطح عملکرد هستند</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <span class="text-xs tracking-widest text-pink-300">SCROLL</span>
+            <i class="fa-solid fa-chevron-down text-3xl animate-bounce mt-2"></i>
+        </div>
+    </section>
+
+    <!-- Why Choose PrivFlood -->
+    <section id="features" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">چرا PRIVFLOOD؟</h2>
+                <p class="text-xl text-zinc-400 max-w-md mx-auto">بهترین تجربه حفاظت و قدرت در سال ۲۰۲۶</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="card-hover bg-gradient-to-br from-zinc-900 to-black border border-pink-500/30 rounded-3xl p-8">
+                    <div class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 text-4xl">⚡</div>
+                    <h3 class="text-3xl font-bold mb-3">سریع‌ترین</h3>
+                    <p class="text-zinc-400 leading-relaxed">بالاترین سرعت flood با بهینه‌سازی‌های اختصاصی. رکوردهای جهانی را جابجا کنید.</p>
+                    <div class="mt-8 text-pink-400 text-sm font-medium flex items-center gap-2">
+                        <span class="block w-8 h-px bg-pink-400"></span>
+                        تا ۲۵۰Gbps
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card-hover bg-gradient-to-br from-zinc-900 to-black border border-pink-500/30 rounded-3xl p-8 relative">
+                    <div class="absolute -top-4 right-8 bg-gradient-to-r from-green-400 to-emerald-400 text-black text-xs font-bold px-6 py-1 rounded-full">بهترین لوکیشن‌ها</div>
+                    <div class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 text-4xl">🌍</div>
+                    <h3 class="text-3xl font-bold mb-3">سرورهای عظیم</h3>
+                    <p class="text-zinc-400 leading-relaxed">دیتاسنترهای Tier-1 در اروپا، آمریکا، آسیا و خاورمیانه.</p>
+                    <ul class="mt-8 space-y-3 text-sm">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-400"></i> آمستردام</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-400"></i> لس‌آنجلس</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-400"></i> سنگاپور</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-400"></i> تهران</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card-hover bg-gradient-to-br from-zinc-900 to-black border border-pink-500/30 rounded-3xl p-8">
+                    <div class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 text-4xl">🛡️</div>
+                    <h3 class="text-3xl font-bold mb-3">کمترین تأخیر</h3>
+                    <p class="text-zinc-400 leading-relaxed">لاتنسی زیر ۱۰ میلی‌ثانیه در اکثر نقاط جهان. تجربه واقعی real-time.</p>
+                    <div class="mt-10 pt-6 border-t border-pink-500/20">
+                        <div class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">LOW</div>
+                        <div class="text-zinc-500 text-sm">LATENCY</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servers Status -->
+    <section id="servers" class="py-24 bg-gradient-to-b from-black to-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-5xl font-bold">وضعیت سرورها</h2>
+                <div class="flex items-center gap-3 bg-green-900/30 text-green-400 px-6 py-3 rounded-3xl">
+                    <div class="w-4 h-4 bg-green-400 rounded-full status-dot"></div>
+                    <span class="font-bold">همه سرورها فعال</span>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-zinc-900/70 border border-green-400/30 rounded-3xl p-6 text-center card-hover">
+                    <div class="text-green-400 text-2xl mb-1">🇳🇱</div>
+                    <div class="font-bold">Amsterdam</div>
+                    <div class="text-4xl font-black text-green-400 mt-4">98%</div>
+                    <div class="text-sm text-zinc-400">Load • ۴۲Gbps</div>
+                </div>
+                
+                <div class="bg-zinc-900/70 border border-green-400/30 rounded-3xl p-6 text-center card-hover">
+                    <div class="text-green-400 text-2xl mb-1">🇺🇸</div>
+                    <div class="font-bold">Los Angeles</div>
+                    <div class="text-4xl font-black text-green-400 mt-4">100%</div>
+                    <div class="text-sm text-zinc-400">Load • ۶۸Gbps</div>
+                </div>
+                
+                <div class="bg-zinc-900/70 border border-green-400/30 rounded-3xl p-6 text-center card-hover">
+                    <div class="text-green-400 text-2xl mb-1">🇸🇬</div>
+                    <div class="font-bold">Singapore</div>
+                    <div class="text-4xl font-black text-green-400 mt-4">95%</div>
+                    <div class="text-sm text-zinc-400">Load • ۳۱Gbps</div>
+                </div>
+                
+                <div class="bg-zinc-900/70 border border-green-400/30 rounded-3xl p-6 text-center card-hover">
+                    <div class="text-green-400 text-2xl mb-1">🇮🇷</div>
+                    <div class="font-bold">Tehran</div>
+                    <div class="text-4xl font-black text-green-400 mt-4">99%</div>
+                    <div class="text-sm text-zinc-400">Load • ۱۹Gbps</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deploy Section -->
+    <section id="deploy" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-6">همین الان Deploy کنید</h2>
+            <p class="text-xl text-zinc-400 mb-12 max-w-lg mx-auto">فقط با یک کلیک به قدرتمندترین شبکه حفاظتی جهان متصل شوید</p>
+            
+            <div class="inline-flex flex-col items-center bg-zinc-900 border border-pink-500/40 rounded-3xl p-12 max-w-md mx-auto">
+                <div class="text-6xl mb-6">🚀</div>
+                <button onclick="alert('به زودی در پنل کاربری فعال می‌شود! تماس با @privflood')"
+                        class="neon-button w-full py-8 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 rounded-3xl text-3xl font-black tracking-wider hover:scale-105 transition-all">
+                    START FLOOD
+                </button>
+                <p class="mt-6 text-sm text-zinc-400">سرویس فقط برای کاربران تأیید شده</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-pink-500/20 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center text-xl font-bold">P</div>
+                    <div>
+                        <div class="font-bold text-xl">PrivFlood</div>
+                        <div class="text-xs text-zinc-500">© ۲۰۲۶ All Rights Reserved</div>
+                    </div>
+                </div>
+                
+                <div class="text-center text-zinc-400 text-sm">
+                    <p>قدرت مطلق • حریم خصوصی تضمینی</p>
+                    <p class="mt-1">Contact Support: <a href="https://t.me/privflood" class="text-pink-400 hover:underline">@privflood</a></p>
+                </div>
+                
+                <div class="flex gap-6 text-2xl">
+                    <i class="fa-brands fa-telegram cursor-pointer hover:text-pink-400 transition-colors"></i>
+                    <i class="fa-brands fa-x-twitter cursor-pointer hover:text-pink-400 transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        console.log('%cPrivFlood 2026 - Ready to Flood!', 'color: #ff1493; font-size: 18px; font-weight: bold');
+        
+        // Simple scroll animation for cards
+        document.addEventListener('scroll', () => {
+            document.querySelectorAll('.card-hover').forEach((el, i) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
